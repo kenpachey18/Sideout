@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Book a court at Sideout Pickleball Courts.">
+  <meta name="theme-color" content="#242b33">
+  <title>Sideout Pickleball Courts</title>
+  <link rel="icon" type="image/png" href="assets/sideout-logo.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#reserve">Skip to booking</a>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Sideout Pickleball Courts home"><img class="brand-logo" src="assets/sideout-logo.png" alt=""><span class="brand-name"><strong>Sideout</strong><small>Pickleball Courts</small></span></a>
+    <nav><button data-scroll="reserve">Book the court</button><button id="show-bookings">My bookings</button></nav>
+    <button class="lime-button" data-scroll="reserve">Find a time</button>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <picture>
+        <source media="(max-width: 900px)" srcset="assets/sideout-hero-mobile.png">
+        <img class="hero-photo" src="assets/sideout-hero.png" alt="A player reaching toward a bright pink pickleball on an outdoor court" fetchpriority="high">
+      </picture>
+      <div class="hero-overlay"></div>
+        <div class="hero-copy">
+          <span class="eyebrow">Sideout Pickleball Courts</span>
+          <h1 id="hero-title">Own the rally.</h1>
+          <button class="lime-button hero-cta" data-scroll="reserve">Book a court <span aria-hidden="true">→</span></button>
+        </div>
+        <div class="hero-cue" aria-hidden="true"><span></span>Scroll to availability</div>
+    </section>
+
+    <section class="booking-section" id="reserve">
+      <div class="section-intro"><div><span class="eyebrow dark">AVAILABILITY</span><h2>Choose a date<br>and time.</h2></div><p>Select one or more consecutive hours. Overnight slots are shown after 11:00 PM.</p></div>
+      <div class="booking-layout">
+        <section class="availability-panel">
+          <div class="panel-head"><strong>01 &nbsp; CHOOSE A DATE</strong><div class="legend"><span>● Available</span><span>● Booked</span><span>● Pending</span><span>● Unavailable</span></div></div>
+          <div class="date-row" id="date-row"></div>
+          <div class="calendar-picker"><label>Check another date <input id="date-picker" type="date"></label></div>
+          <div class="slot-heading"><strong>02 &nbsp; SELECT A COURT AND CONSECUTIVE HOURS</strong><span id="schedule-date"></span></div>
+          <p class="next-day-note"><b>Note:</b> Slots from <b>12:00 AM onwards</b> are on the following day.</p>
+          <div id="preserved-note" class="preserved-note hidden"></div>
+          <div class="slot-grid" id="slot-grid"></div>
+        </section>
+
+        <aside class="summary-card">
+          <span>YOUR BOOKING</span><h3 id="summary-title">Choose your hours.</h3>
+          <dl>
+            <div><dt>Date</dt><dd id="summary-date">—</dd></div>
+            <div><dt>Time</dt><dd id="summary-time">No hours selected</dd></div>
+            <div><dt>Court</dt><dd id="summary-court">Pickleball Court 01</dd></div>
+            <div><dt>Duration</dt><dd id="summary-duration">0 hours</dd></div>
+            <div><dt>Hourly rate</dt><dd id="summary-rate">₱350 / hour</dd></div>
+            <div class="total"><dt>Total</dt><dd id="summary-total">₱0</dd></div>
+          </dl>
+          <button id="continue-booking" class="lime-button full" disabled>Continue</button>
+          <small>Bookings remain pending until payment proof is confirmed.</small>
+        </aside>
+      </div>
+      <div class="mobile-booking-bar" id="mobile-booking-bar" aria-live="polite">
+        <div><small id="mobile-summary-time">Choose a time</small><strong id="mobile-summary-total">₱0</strong></div>
+        <button id="mobile-continue" class="lime-button" disabled>Continue</button>
+      </div>
+    </section>
+
+    <section class="my-bookings hidden" id="bookings">
+      <span class="eyebrow dark">MANAGE MY BOOKING</span><h2>Find your reservation.</h2><p>Enter the 11-digit mobile number used when the booking was submitted.</p>
+      <form id="lookup-form" class="lookup-card"><label>Mobile number<input id="lookup-mobile" type="tel" inputmode="numeric" maxlength="11" pattern="[0-9]{11}" placeholder="09171234567" required></label><button class="lime-button">Look up</button></form>
+      <p id="lookup-message"></p><div id="lookup-results" class="booking-results"></div>
+    </section>
+  </main>
+
+  <footer><a class="brand footer-brand" href="#top" aria-label="Sideout Pickleball Courts home"><img class="brand-logo" src="assets/sideout-logo.png" alt=""><span class="brand-name"><strong>Sideout</strong><small>Pickleball Courts</small></span></a><p>Pick a court. Set the time. Play.</p><nav><button data-scroll="reserve">Book a court</button><a href="#top">Location</a><button id="footer-bookings">My bookings</button><a href="admin.html">Admin</a></nav></footer>
+
+  <div class="modal-backdrop hidden" id="booking-modal">
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal-close" id="close-modal" aria-label="Close">×</button>
+      <div class="steps"><span id="step-1-label">1 Details</span><span id="step-2-label">2 Payment</span><span id="step-3-label">3 Received</span></div>
+      <div id="checkout-content"></div>
+    </section>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
